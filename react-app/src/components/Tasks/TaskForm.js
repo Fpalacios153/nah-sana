@@ -83,7 +83,6 @@ const TaskForm = ({ taskId, setShowModal, userId: passedUserId, projectId: passe
             formData.id = taskId;
             let data = await dispatch(updateOneTask(formData))
             if (Array.isArray(data)) {
-                console.log(errors)
                 setErrors(data)
             } else {
                 await dispatch(oneWorkspace(workspaceId))
