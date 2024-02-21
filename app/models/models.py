@@ -12,21 +12,21 @@ long_str = 500
 user_workspaces = db.Table(
     'user_workspaces',
     db.Model.metadata,
-    db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('workspaces', db.Integer, db.ForeignKey('workspaces.id'), primary_key=True)
+     db.Column('users', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), primary_key=True)),
+    db.Column('workspaces', db.Integer, db.ForeignKey(add_prefix_for_prod('workspaces.id'), primary_key=True))
 )
-# if environment == "production":
-#     user_workspaces.schema = SCHEMA
+if environment == "production":
+    user_workspaces.schema = SCHEMA
 
 # Connects users to projects they are assigned to
 user_projects = db.Table(
     'user_projects',
     db.Model.metadata,
-    db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('projects', db.Integer, db.ForeignKey('projects.id'), primary_key=True)
+    db.Column('users', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), primary_key=True)),
+    db.Column('projects', db.Integer, db.ForeignKey(add_prefix_for_prod('projects.id'), primary_key=True))
 )
-# if environment == "production":
-#     user_projects.schema = SCHEMA
+if environment == "production":
+    user_projects.schema = SCHEMA
 
 class Workspace(db.Model):
     __tablename__ = "workspaces"
@@ -62,7 +62,7 @@ class Project(db.Model):
     due_date = db.Column(db.Date)
     description = db.Column(db.String(long_str))
     icon = db.Column(db.String(med_str))
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
     # Relationships
     workspace = db.relationship("Workspace", back_populates="projects")

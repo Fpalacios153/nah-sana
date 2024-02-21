@@ -9,6 +9,7 @@ function Splashpage() {
       {/* Navbar */}
       <div className='splashpageNav'>
         <div className='splashpageLogoContainer'>
+
           <img src="/static/images/logos/logo-light.png" alt="logo" className='splashpageLogo' />
           <p className='splashpageLogoText'>Nah-sana</p>
         </div>
@@ -54,10 +55,10 @@ function Splashpage() {
           <div className='splashpageButton' id="spgreen">
             <div className='spProfileInitials'>CC</div>
             <div className='splashpageProfileIcons'>
-              <a href="https://github.com/chencc33" target="_blank">
+              <a href="https://github.com/chencc33" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-square-github devLinks"></i>
               </a>
-              <a href="https://www.linkedin.com/in/chencc33" target="_blank">
+              <a href="https://www.linkedin.com/in/chencc33" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin devLinks"></i>
               </a>
             </div>
@@ -65,10 +66,10 @@ function Splashpage() {
           <div className='splashpageButton' id="spyellow">
             <div className='spProfileInitials'>CO</div>
             <div className='splashpageProfileIcons'>
-              <a href="https://github.com/coucode" target="_blank">
+              <a href="https://github.com/coucode" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-square-github devLinks"></i>
               </a>
-              <a href="https://www.linkedin.com/in/ceciliasou" target="_blank">
+              <a href="https://www.linkedin.com/in/ceciliasou" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin devLinks"></i>
               </a>
             </div>
@@ -76,10 +77,10 @@ function Splashpage() {
           <div className='splashpageButton' id="spgreen">
             <div className='spProfileInitials'>FP</div>
             <div className='splashpageProfileIcons'>
-              <a href="https://github.com/Fpalacios153" target="_blank">
+              <a href="https://github.com/Fpalacios153" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-square-github devLinks"></i>
               </a>
-              <a href="https://www.linkedin.com/in/francisco-palacios-783619253/" target="_blank">
+              <a href="https://www.linkedin.com/in/francisco-palacios-783619253/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin devLinks"></i>
               </a>
             </div>
@@ -87,10 +88,10 @@ function Splashpage() {
           <div className='splashpageButton' id="spyellow">
             <div className='spProfileInitials'>JC</div>
             <div className='splashpageProfileIcons'>
-              <a href="https://github.com/jrchew15" target="_blank">
+              <a href="https://github.com/jrchew15" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-square-github devLinks"></i>
               </a>
-              <a href="https://www.linkedin.com/in/jason-r-chew/" target="_blank">
+              <a href="https://www.linkedin.com/in/jason-r-chew/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin devLinks"></i>
               </a>
             </div>

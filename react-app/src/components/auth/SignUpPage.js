@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -59,7 +59,7 @@ const SignUpPage = () => {
         <div className='signupContentLeft'>
           <p className='signupHeader'>Sign up</p>
           <p className='signupSubheader'> By signing up, I agree to the Nah-sana Privacy Policy and Terms of Service</p>
-          
+
           <form onSubmit={onSignUp} className='signupForm'>
             {errors.length > 0 && (<div className='errorContainer'>
               {errors.map((error, ind) => (
