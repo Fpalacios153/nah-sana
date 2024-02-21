@@ -39,7 +39,7 @@ const TasksListByProject = ({ projectId }) => {
     useEffect(() => {
         dispatch(getTasksByProjectId(projectId)).then(() => setIsLoaded(true))
         dispatch(oneWorkspace(workspace.workspace.id))
-    }, [dispatch, showTaskDetail, projectId])
+    }, [dispatch, showTaskDetail, projectId, workspace.workspace.id])
 
     return isLoaded ? (
         <>

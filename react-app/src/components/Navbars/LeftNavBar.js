@@ -103,25 +103,25 @@ export default function LeftNavBar() {
                 <NavDropdownAddUserModal handleClick={() => setWorkspaceDropdownOpen(false)} />
             </div>
             <div id='developer-info-dropdown' className="left-dropdowns" style={{ display: developerDropdownOpen ? 'flex' : 'none' }} ref={developerDropdownRef} >
-                <a href="https://www.github.com/chencc33" target="_blank">C. Chen -
+                <a href="https://www.github.com/chencc33" target="_blank" rel="noreferrer">C. Chen -
                     <div>
                         <i className="fa-brands fa-square-github" />
                     </div>
                 </a>
                 <div className="horizontal-separator" />
-                <a href="https://www.github.com/jrchew15" target="_blank">J. Chew -
+                <a href="https://www.github.com/jrchew15" target="_blank" rel="noreferrer">J. Chew -
                     <div>
                         <i className="fa-brands fa-square-github" />
                     </div>
                 </a>
                 <div className="horizontal-separator" />
-                <a href="https://www.github.com/coucode" target="_blank">C. Ou -
+                <a href="https://www.github.com/coucode" target="_blank" rel="noreferrer">C. Ou -
                     <div>
                         <i className="fa-brands fa-square-github" />
                     </div>
                 </a>
                 <div className="horizontal-separator" />
-                <a href="https://www.github.com/Fpalacios153" target="_blank">F. Palacios -
+                <a href="https://www.github.com/Fpalacios153" target="_blank" rel="noreferrer">F. Palacios -
                     <div>
                         <i className="fa-brands fa-square-github" />
                     </div>

@@ -69,8 +69,8 @@ const TasksListUserProfile = ({ props }) => {
                                                 style={{ cursor: 'pointer' }}
                                             >
                                                 <div>
-
-                                                    <i className="fa fa-check-circle-o" aria-hidden="true" style={{ color: task.complete ? 'green' : 'white', borderRadius: '10px' }}></i>  {task.name}</div>
+                                                    <i className="fa fa-check-circle-o" aria-hidden="true" style={{ color: task.complete ? 'green' : 'white', borderRadius: '10px' }}></i>  {task.name}
+                                                </div>
                                             </td>
                                             <td className="table-cell">{task?.dueDate.split(' ')[2]} {task?.dueDate.split(' ')[1]}</td>
                                         </tr>
