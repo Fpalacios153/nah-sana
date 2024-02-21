@@ -15,8 +15,8 @@ user_workspaces = db.Table(
     db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('workspaces', db.Integer, db.ForeignKey('workspaces.id'), primary_key=True)
 )
-if environment == "production":
-    user_workspaces.schema = SCHEMA
+# if environment == "production":
+#     user_workspaces.schema = SCHEMA
 
 # Connects users to projects they are assigned to
 user_projects = db.Table(
@@ -25,8 +25,8 @@ user_projects = db.Table(
     db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('projects', db.Integer, db.ForeignKey('projects.id'), primary_key=True)
 )
-if environment == "production":
-    user_projects.schema = SCHEMA
+# if environment == "production":
+#     user_projects.schema = SCHEMA
 
 class Workspace(db.Model):
     __tablename__ = "workspaces"
