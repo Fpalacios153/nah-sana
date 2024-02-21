@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 # Strings
@@ -15,6 +15,8 @@ user_workspaces = db.Table(
     db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('workspaces', db.Integer, db.ForeignKey('workspaces.id'), primary_key=True)
 )
+if environment == "production":
+    user_workspaces.schema = SCHEMA
 
 # Connects users to projects they are assigned to
 user_projects = db.Table(
@@ -23,9 +25,13 @@ user_projects = db.Table(
     db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('projects', db.Integer, db.ForeignKey('projects.id'), primary_key=True)
 )
+if environment == "production":
+    user_projects.schema = SCHEMA
 
 class Workspace(db.Model):
     __tablename__ = "workspaces"
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(med_str), nullable=False)
@@ -46,9 +52,11 @@ class Workspace(db.Model):
 
 class Project(db.Model):
     __tablename__ = "projects"
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    workspace_id = db.Column(db.Integer, db.ForeignKey('workspaces.id'))
+    workspace_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('workspaces.id')))
     name = db.Column(db.String(med_str), nullable=False)
     status = db.Column(db.String(small_str))
     due_date = db.Column(db.Date)
@@ -79,10 +87,12 @@ class Project(db.Model):
 
 class Task(db.Model):
     __tablename__ = "tasks"
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    project_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('projects.id')))
     name = db.Column(db.String(med_str), nullable=False)
     due_date = db.Column(db.Date)
     description = db.Column(db.String(long_str))

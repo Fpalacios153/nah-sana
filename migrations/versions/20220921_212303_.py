@@ -1,12 +1,15 @@
 """empty message
 
 Revision ID: bea51d9ed696
-Revises: 
+Revises:
 Create Date: 2022-09-21 21:23:03.221319
 
 """
 from alembic import op
 import sqlalchemy as sa
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -32,11 +35,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('workspaces',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE workspaces SET SCHEMA {SCHEMA};")
     op.create_table('projects',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('workspace_id', sa.Integer(), nullable=True),
@@ -50,6 +57,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['workspace_id'], ['workspaces.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE projects SET SCHEMA {SCHEMA};")
     op.create_table('user_workspaces',
     sa.Column('users', sa.Integer(), nullable=False),
     sa.Column('workspaces', sa.Integer(), nullable=False),
@@ -57,6 +66,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['workspaces'], ['workspaces.id'], ),
     sa.PrimaryKeyConstraint('users', 'workspaces')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_workspaces SET SCHEMA {SCHEMA};")
     op.create_table('tasks',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -69,6 +80,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE tasks SET SCHEMA {SCHEMA};")
     op.create_table('user_projects',
     sa.Column('users', sa.Integer(), nullable=False),
     sa.Column('projects', sa.Integer(), nullable=False),
@@ -76,6 +89,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['users'], ['users.id'], ),
     sa.PrimaryKeyConstraint('users', 'projects')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE user_projects SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
